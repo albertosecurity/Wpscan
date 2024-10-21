@@ -1,0 +1,19 @@
+import subprocess
+
+# Configuración del comando de WPScan
+url = "https://www.ejemplo.com"  # Debe cambiarse por una variable
+api_token = "tu_api_aqui" # Debe cambiarse por una variable
+docker_command = [
+    "docker", "run", "--rm", "wpscanteam/wpscan",
+    "--url", url,
+    "--api-token", api_token,
+    "--random-user-agent"
+]
+
+# Ejecutar el comando en Docker
+try:
+    result = subprocess.run(docker_command, capture_output=True, text=True)
+    print("Salida del comando WPScan:")
+    print(result.stdout)
+except Exception as e:
+    print(f"Error al ejecutar el comando: {e}")
